@@ -1,10 +1,20 @@
 const gulp = require('gulp');
+
+const plumber = require('gulp-plumber');
+const through = require('through2');
+
 const sass = require('gulp-sass')(require('sass'));
 const uglify = require('gulp-uglify');
 const concat = require('gulp-concat');
 const babel = require('gulp-babel');
 const terser = require('gulp-terser');
 const browserSync = require('browser-sync').create();
+
+function sleep(ms) {
+  return through.obj(function (file, enc, cb) {
+    setTimeout(() => cb(null, file), ms);
+  });
+}
 
 // HTML to dist
 gulp.task('html', () => {
@@ -22,7 +32,9 @@ gulp.task('html', () => {
 // Compile SCSS
 gulp.task('scss', () => {
   return gulp.src('src/scss/**/*.scss')
-    .pipe(sass({ outputStyle: 'compressed' }))
+    .pipe(plumber())
+    .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
+    // .pipe(sleep(100))
     .pipe(gulp.dest('dist/css'))
     .pipe(browserSync.stream());
 });
@@ -47,14 +59,18 @@ gulp.task('serve', () => {
   browserSync.init({
     server: {
       baseDir: 'dist'
-    }
+    },
+    // files: [
+    //   './app/index.html',
+    //   './app/assets/styles/**/*.css'
+    // ]
   });
 
   // gulp.watch('src/assets/**/*.*', gulp.series('assets'));
   gulp.watch('src/scss/**/*.scss', gulp.series('scss'));
   gulp.watch('src/js/**/*.js', gulp.series('js'));
   gulp.watch('src/*.html', gulp.series('html'));
-  gulp.watch('src/*.html').on('change', browserSync.reload);
+  // gulp.watch('src/*.html').on('change', browserSync.reload);
 });
 
 // Default task
