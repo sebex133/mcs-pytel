@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Firma Informatyczna</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
+      scroll-behavior: smooth;
+    }
+    header {
+      position: fixed;
+      width: 100%;
+      background-color: #111;
+      padding: 10px 0;
+      box-shadow: 0 2px 5px rgba(255,255,255,0.2);
+      z-index: 1000;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    section {
+      padding: 100px 20px 60px;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease-out;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .banner {
+      background: url('https://images.unsplash.com/photo-1581091870622-1e7b1f3c7b8e?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 0 100px rgba(0,0,0,0.7);
+    }
+    .banner h1 {
+      font-size: 3em;
+      background-color: rgba(0,0,0,0.6);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255,255,255,0.3);
+    }
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      box-shadow: 0 0 10px rgba(255,255,255,0.2);
+    }
+    footer {
+      background-color: #111;
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9em;
+      border-top: 1px solid #333;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="#onas">O nas</a>
+      <a href="#oferta">Oferta</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <h1>Twoja Technologia, Nasza Pasja</h1>
+  </div>
+
+  <section id="onas">
+    <h2>O nas</h2>
+    <p>Jesteśmy zespołem pasjonatów IT, którzy tworzą nowoczesne rozwiązania dla firm. Specjalizujemy się w tworzeniu aplikacji webowych, systemów ERP i automatyzacji procesów.</p>
+  </section>
+
+  <section id="oferta">
+    <h2>Oferta</h2>
+    <ul>
+      <li>Tworzenie stron i aplikacji internetowych</li>
+      <li>Integracje systemów i API</li>
+      <li>Audyt i optymalizacja infrastruktury IT</li>
+      <li>Wsparcie techniczne i doradztwo</li>
+    </ul>
+  </section>
+
+  <section id="kontakt">
+    <h2>Kontakt</h2>
+    <p>Skontaktuj się z nami, aby omówić potrzeby Twojej firmy.</p>
+    <iframe src="https://www.google.com/maps?q=ul.+Grunwaldzka+21,+Pozna%C5%84&output=embed"></iframe>
+  </section>
+
+  <footer>
+    <p>Firma Informatyczna XYZ<br>
+    ul. Grunwaldzka 21, 60-783 Poznań<br>
+    NIP: 123-456-78-90 | REGON: 987654321</p>
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.3 });
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+
+</body>
+</html>
