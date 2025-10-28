@@ -29,9 +29,10 @@
     <div class="theme-switcher">
       <button id="toggle-theme-button">Zmień motyw</button>
     </div>
-    <button class="menu-toggle">
-      <span class="open">☰</span>
-      <span class="close">x</span>
+    <button class="menu-toggle hamburger" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
     </button>
   </header>
 
@@ -62,14 +63,25 @@
 
   <section id="map">
     <h2>Znajdziesz nas tutaj</h2>
-    <iframe
+    <div style="filter: grayscale(100%);">
+      <iframe
+        width="600"
+        height="450"
+        style="border:0"
+        loading="lazy"
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2442.326074285634!2d16.89792747688417!3d52.39875597201433!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470445c5e2e1e3e1%3A0x9f6e3c6f3b9e3e3e!2sGrunwaldzka%2021%2F303%2C%2060-783%20Pozna%C5%84!5e0!3m2!1spl!2spl!4v1698500000000!5m2!1spl!2spl">
+      </iframe>
+    </div>
+    <!-- <iframe
       src="https://www.google.com/maps?q=ul.+Grunwaldzka+21,+Pozna%C5%84&output=embed"
-    ></iframe>
+    ></iframe> -->
   </section>
 
   <section id="contact">
     <h2>Kontakt</h2>
-    <p>📧 kontakt@mcs-pytel.com</p>
+    <p><a href="mailto:kontakt@mcs-pytel.com">📧&nbsp;kontakt@mcs-pytel.com</a></p>
   </section>
 
   <section id="footer">

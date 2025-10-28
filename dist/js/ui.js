@@ -5,7 +5,9 @@ export function setupUI() {
   toggleThemeButton.addEventListener("click", toggleThemeFunc);
 
   const toggleMenuButton = document.querySelector(".menu-toggle");
+
   toggleMenuButton.addEventListener("click", () => {
+    toggleMenuButton.classList.toggle("active");
     document.getElementById("nav").classList.toggle("show");
   });
 }
