@@ -18,6 +18,16 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (prefers-color-scheme: dark) {
+  body.light-mode .theme-switcher button {
+    box-shadow: 2px 2px 5px var(--text-color);
+  }
+}
+@media (prefers-color-scheme: light) {
+  body:not(.light-mode) .theme-switcher button {
+    box-shadow: 2px 2px 5px var(--text-color);
+  }
+}
 body {
   margin: 0;
   padding: 0;
@@ -175,6 +185,7 @@ section {
   width: 200px;
   height: 200px;
   border-radius: 50%;
+  color: var(--bg-color);
   background: linear-gradient(135deg, var(--bg-color), var(--text-color));
   display: flex;
   align-items: center;
