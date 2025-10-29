@@ -91,6 +91,8 @@ html {
 }
 
 body {
+  position: relative;
+
   margin: 0;
   padding: 0;
 
@@ -178,16 +180,21 @@ body {
   max-width: 1200px;
   margin: 0 auto;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1200px) {
     padding: 0 15px;
   }
 }
 
 header {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 65px 0 0;
+
+  .header-sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    box-shadow: 0 2px 8px var(--text-color);
+  }
   
   .header-wrapper {
     position: relative;
@@ -347,24 +354,18 @@ section {
     display: flex;
     flex-direction: column;
     padding: 10px 0 20px;
-    
+
     background-color: var(--bg-color);
     box-shadow: -2px 2px 4px var(--text-color);
     overflow: hidden;
     
     position: absolute;
-    top: 65px;
+    top: 69px;
     right: -100%;
     
     transition: right 0.3s ease;
     &.show {
       right: 0;
-
-      nav {  
-        a {
-          color: var(--text-color);
-        }        
-      }
     }
 
     nav {
@@ -381,9 +382,7 @@ section {
       }
 
       a {
-        color: var(--bg-color);
         border-bottom: 1px solid #eee;
-        // transition: color 0.7s ease;
       }
     }
   }

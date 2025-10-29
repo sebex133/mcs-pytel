@@ -10,10 +10,11 @@ const autoprefixer = require("autoprefixer");
 const sourcemaps = require("gulp-sourcemaps");
 const cleanCSS = require("gulp-clean-css");
 
-const uglify = require("gulp-uglify");
-const concat = require("gulp-concat");
-const babel = require("gulp-babel");
-const terser = require("gulp-terser");
+const browserify = require('browserify');
+const babelify = require('babelify');
+const source = require('vinyl-source-stream');
+const buffer = require('vinyl-buffer');
+const terser = require('gulp-terser');
 
 function sleep(ms) {
   return through.obj(function (file, enc, cb) {
@@ -51,6 +52,49 @@ gulp.task("js", () => {
 //     .pipe(browserSync.stream());
 // });
 
+// Paths
+const jsPaths = {
+  jsEntry: 'src/js/main.js',
+  jsWatch: 'src/js/**/*.js',
+  jsOutputDir: 'dist/js',
+  jsOutputFile: 'bundle.js',
+};
+
+// JS task: bundle + transpile + minify + stream
+gulp.task('js-es6', () => {
+  return browserify({ entries: jsPaths.jsEntry, debug: true })
+    .transform(babelify, { presets: ['@babel/preset-env'], sourceMaps: true })
+    .bundle()
+    .pipe(source(jsPaths.jsOutputFile))
+    .pipe(buffer())
+    .pipe(terser())
+    .pipe(gulp.dest(jsPaths.jsOutputDir))
+    .pipe(browserSync.stream());
+});
+
+// stylesPaths
+const stylesPaths = {
+  scss: 'src/scss/**/*.scss',
+  css: 'dist/css'
+};
+
+// Compile SCSS → CSS + Autoprefixer + Minify
+gulp.task("styles", () => {
+  return (
+    gulp.src(stylesPaths.scss)
+      .pipe(sourcemaps.init())
+      .pipe(plumber())
+      .pipe(sass().on('error', sass.logError))
+      .pipe(postcss([
+        autoprefixer({ overrideBrowserslist: ['> 1%', 'last 2 versions', 'Firefox ESR'] })
+      ]))
+      .pipe(cleanCSS())
+      .pipe(sourcemaps.write('.'))
+      .pipe(gulp.dest(stylesPaths.css))
+      .pipe(browserSync.stream())
+  )
+});
+
 // Compile SCSS
 // gulp.task("scss", () => {
 //   return (
@@ -64,34 +108,13 @@ gulp.task("js", () => {
 //   );
 // });
 
-// stylesPaths
-const stylesPaths = {
-  scss: 'src/scss/**/*.scss',
-  css: 'dist/css'
-};
-
-// Compile SCSS → CSS + Autoprefixer + Minify
-gulp.task("styles", () => {
-  return (
-    gulp.src(stylesPaths.scss)
-    .pipe(sourcemaps.init())
-    .pipe(sass().on('error', sass.logError))
-    .pipe(postcss([
-      autoprefixer({ overrideBrowserslist: ['> 1%', 'last 2 versions', 'Firefox ESR'] })
-    ]))
-    .pipe(cleanCSS())
-    .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest(stylesPaths.css))
-  )
-});
-
-
 // Serve and watch
 gulp.task("serve", () => {
   browserSync.init({
     server: {
       baseDir: "dist",
     },
+    // files: [stylesPaths, jsPaths]
     // files: [
     //   './app/index.html',
     //   './app/assets/styles/**/*.css'
@@ -100,12 +123,13 @@ gulp.task("serve", () => {
 
   // gulp.watch('src/assets/**/*.*', gulp.series('assets'));
   gulp.watch("src/*.html", gulp.series("html"));
-  gulp.watch("src/js/**/*.js", gulp.series("js"));
+  gulp.watch(jsPaths.jsWatch, gulp.series("js-es6"));
   gulp.watch(stylesPaths.scss, gulp.series("styles"));
+  // gulp.watch("src/js/**/*.js", gulp.series("js"));
   // gulp.watch("src/scss/**/*.scss", gulp.series("scss"));
   // gulp.watch('src/*.html').on('change', browserSync.reload);
 });
 
 // Default task
-gulp.task("default", gulp.series("html", "js", "styles", "serve"));
+gulp.task("default", gulp.series("html", "js-es6", "styles", "serve"));
 // gulp.task('default', gulp.series('assets', 'scss', 'js', 'html', 'serve'));
