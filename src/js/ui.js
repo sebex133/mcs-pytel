@@ -4,11 +4,12 @@ export function setupUI() {
   const toggleThemeButton = document.querySelector("#toggle-theme-button");
   toggleThemeButton.addEventListener("click", toggleThemeFunc);
 
-  const toggleMenuButton = document.querySelector(".menu-toggle");
+  const toggleMenuButton = document.querySelector(".menu-toggle .hamburger");
+  const navWrapper = document.querySelector(".nav-wrapper");
 
-  toggleMenuButton.addEventListener("click", () => {
-    toggleMenuButton.classList.toggle("active");
-    document.getElementById("nav").classList.toggle("show");
+  toggleMenuButton.addEventListener("click", (event) => {
+    event.currentTarget.classList.toggle("active");
+    navWrapper.classList.toggle("show");
   });
 }
 
