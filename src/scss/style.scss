@@ -132,6 +132,9 @@ body {
   a, button, input {
     @include chakra-font;
 
+    // Prevent zoom in on double-tap (iphone safari etc.)
+    touch-action: manipulation;
+
     background-color: transparent !important;
 
     text-decoration: none;
