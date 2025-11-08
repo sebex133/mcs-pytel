@@ -302,6 +302,12 @@ section {
   // background: url('/assets/images/close-up-hands-typing-keyboard-with-code-computer-screen_1187703-176393.jpg') center/cover no-repeat;
   padding: 6rem 2rem;
   box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.4);
+
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #banner h1 {
@@ -344,7 +350,7 @@ section {
 
 #footer {
   font-size: 0.9rem;
-  padding: 2rem;
+  padding: 60px 0 100px;
   text-align: center;
 }
 

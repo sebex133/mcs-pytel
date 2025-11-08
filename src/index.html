@@ -30,6 +30,15 @@
   <link rel="preload" href="/assets/fonts/Chakra_Petch/ChakraPetch-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous"> -->
   
   <link rel="stylesheet" href="./css/style.css">
+
+  <!-- <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> -->
+  <script>
+    // Load CSS only if JS is enabled
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://unpkg.com/aos@next/dist/aos.css';
+    document.head.appendChild(link);
+  </script>
 </head>
 <body>
   <header class="chakra-font">
@@ -73,14 +82,15 @@
   </header>
 
   <section id="banner" class="orbitron-font white-font no-wrap">
-    <h1>MCS-PYTEL</h1>
-    <p>Machine & Code Solutions</p>
+    <h1 data-aos="fade-up" data-aos-delay="10" data-aos-duration="650">MCS-PYTEL</h1>
+    <p data-aos="fade-down" data-aos-delay="10" data-aos-duration="650">Machine & Code Solutions</p>
     <!-- <p>Maximal Comprehensive Solutions</p> -->
     <!-- <p>Maximal Comprehensive Services</p> -->
   </section>
 
   <section id="about">
-    <h2>O nas</h2>
+    <h2 data-aos="zoom-in-up">O nas</h2>
+    <div data-aos="zoom-in">
      <p>Bateria w Twoim laptopie domaga się wymiany? 💻🔋 <br/>
       Chcesz kupić gamingowego PC-ta, ale nie wiesz jak dobrać i poskładać podzespoły? 🎮</p>
      <p>A może chcesz stworzyć swoją własną witrynę internetową lub masz już serwis WWW, który wymaga opieki? 🌐</p>
@@ -89,20 +99,21 @@
      <p>Lubimy dzielić się wiedzą - najlepiej przy filiżance dobrej kawy. ☕ <br/>
       Zapraszamy na konsulting do naszego biura w Poznaniu. 🥐🥔🐐 </pbr/>
       Tych, którzy wolą smak kawy w domowym zaciszu, zapraszamy do konsultacji online. 🎧</p>
+    </div>
   </section>
 
   <section id="offer">
-    <h2>Nasze usługi</h2>
+    <h2 data-aos="zoom-in-up">Nasze usługi</h2>
     <div class="circle-container">
-      <div class="circle">Serwis sprzętu komputerowego</div>
-      <div class="circle">Webdevelopment</div>
-      <div class="circle">Konsulting IT</div>
+      <div class="circle" data-aos="flip-left">Serwis sprzętu komputerowego</div>
+      <div class="circle" data-aos="flip-up">Webdevelopment</div>
+      <div class="circle" data-aos="flip-right">Konsulting IT</div>
     </div>
   </section>
 
   <section id="map">
-    <h2>Znajdziesz nas tutaj</h2>
-    <div style="filter: grayscale(100%);">
+    <h2 data-aos="zoom-in-up">Znajdziesz nas tutaj</h2>
+    <div data-aos="zoom-in" style="filter: grayscale(100%);">
       <iframe
         width="600"
         height="450"
@@ -119,19 +130,26 @@
   </section>
 
   <section id="contact">
-    <h2>Kontakt</h2>
-    <p><a href="mailto:kontakt@mcs-pytel.com">📧&nbsp;kontakt@mcs-pytel.com</a></p>
+    <h2 data-aos="zoom-in-down">Kontakt</h2>
+    <p data-aos="fade-up"><a href="mailto:kontakt@mcs-pytel.com">📧&nbsp;kontakt@mcs-pytel.com</a></p>
   </section>
 
   <section id="footer">
-    <p>&copy; 2025 MCS-PYTEL | Wszystkie prawa zastrzeżone.</p>
-    <p>⚖️ Informacje zamieszczone na tej stronie internetowej nie stanowią oferty w rozumieniu art. 71 Kodeksu cywilnego.</p>
-    <p>🍪 Ta strona <b>nie używa</b> plików cookies, ani <b>nie przetwarza</b> żadnych danych osobowych i statystycznych.</p>
-    <p>🔐 Właściciel strony <b>nie ponosi odpowiedzialności</b> za jakiekolwiek konsekwecje korzystania z powyższej strony</p>
+    <p data-aos="fade-down">&copy; 2025 MCS-PYTEL | Wszystkie prawa zastrzeżone.</p>
+    <p data-aos="fade-up">⚖️ Informacje zamieszczone na tej stronie internetowej nie stanowią oferty w rozumieniu art. 71 Kodeksu cywilnego.</p>
+    <p data-aos="fade-up">🍪 Ta strona <b>nie używa</b> plików cookies, ani <b>nie przetwarza</b> żadnych danych osobowych i statystycznych.</p>
+    <p data-aos="fade-up">🔐 Właściciel strony <b>nie ponosi odpowiedzialności</b> za jakiekolwiek konsekwecje korzystania z powyższej strony</p>
   </section>
 
   <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script> -->
   <script type="module" src="./js/bundle.js"></script>
   <!-- <script type="module" src="/js/main.js"></script> -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      once: true,
+      duration: 1000,
+    });
+  </script>
 </body>
 </html>
