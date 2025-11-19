@@ -8,9 +8,17 @@ export function setupUI() {
   const navWrapper = document.querySelector(".nav-wrapper");
 
   toggleMenuButton.addEventListener("click", (event) => {
-    event.currentTarget.classList.toggle("active");
+    toggleMenuButton.classList.toggle("active");
     navWrapper.classList.toggle("show");
   });
+
+  const mainNavLinks = document.getElementsByClassName("main-nav-link");
+  for (let i = 0; i < mainNavLinks.length; i++) {
+    mainNavLinks[i].addEventListener("click", (event) => {
+      toggleMenuButton.classList.remove("active");
+      navWrapper.classList.remove("show");
+    });
+  }
 }
 
 var isThemeDark = true;
