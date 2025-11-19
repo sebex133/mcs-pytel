@@ -7,8 +7,14 @@ export function setupUI() {
   const menuWrapper = document.querySelector(".menu-wrapper");
   const toggleMenuButton = document.querySelector(".menu-toggle .hamburger");
   const navWrapper = document.querySelector(".nav-wrapper");
+  const debugData = document.querySelector("#debug-data");
 
   const focusTrapHandler = (e) => {
+    const escapedHtml = e.target.innerHTML .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+    debugData.innerHTML = "<span>" + escapedHtml + "_" + !menuWrapper.contains(e.target) + "<span><br/>" + debugData.innerHTML;
+
     if (!menuWrapper.contains(e.target)) {
       e.stopPropagation();
       toggleMenuButton.focus();
