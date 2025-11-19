@@ -4,12 +4,30 @@ export function setupUI() {
   const toggleThemeButton = document.querySelector("#toggle-theme-button");
   toggleThemeButton.addEventListener("click", toggleThemeFunc);
 
+  const menuWrapper = document.querySelector(".menu-wrapper");
   const toggleMenuButton = document.querySelector(".menu-toggle .hamburger");
   const navWrapper = document.querySelector(".nav-wrapper");
+
+  const focusTrapHandler = (e) => {
+    if (!menuWrapper.contains(e.target)) {
+      e.stopPropagation();
+      toggleMenuButton.focus();
+    }
+  };
 
   toggleMenuButton.addEventListener("click", (event) => {
     toggleMenuButton.classList.toggle("active");
     navWrapper.classList.toggle("show");
+
+    const dropdownFocusTrapHandler = focusTrappedElementsHandlers.get(toggleMenuButton);
+    if (navWrapper.classList.contains('show') && !dropdownFocusTrapHandler) {
+      document.body.addEventListener('focusin', focusTrapHandler);
+      focusTrappedElementsHandlers.set(toggleMenuButton, focusTrapHandler);
+    }
+    else if (!navWrapper.classList.contains('show') && dropdownFocusTrapHandler) {
+      document.body.removeEventListener('focusin', dropdownFocusTrapHandler);
+      focusTrappedElementsHandlers.delete(toggleMenuButton);
+    }
   });
 
   const mainNavLinks = document.getElementsByClassName("main-nav-link");
@@ -17,9 +35,17 @@ export function setupUI() {
     mainNavLinks[i].addEventListener("click", (event) => {
       toggleMenuButton.classList.remove("active");
       navWrapper.classList.remove("show");
+
+      const dropdownFocusTrapHandler = focusTrappedElementsHandlers.get(toggleMenuButton);
+      if (!navWrapper.classList.contains('show') && dropdownFocusTrapHandler) {
+        document.body.removeEventListener('focusin', dropdownFocusTrapHandler);
+        focusTrappedElementsHandlers.delete(toggleMenuButton);
+      }
     });
   }
 }
+
+var focusTrappedElementsHandlers = new Map();
 
 var isThemeDark = true;
 const toggleThemeFunc = () => {

@@ -49,33 +49,35 @@
             MCS-PYTEL
           </a>
         </div>
-        <div class="nav-wrapper">
-          <nav id="nav">
-            <ul>
-              <li>
-                <a class="main-nav-link" href="#about">O nas</a>
-              </li>
-              <li>
-                <a class="main-nav-link" href="#offer">Usługi</a>
-              </li>
-              <li>
-                <a class="main-nav-link" href="#map">Mapa</a>
-              </li>
-              <li>
-                <a class="main-nav-link" href="#contact">Kontakt</a>
-              </li>
-            </ul>
-          </nav>
-          <div class="theme-switcher">
-            <button id="toggle-theme-button" class="no-wrap">Zmień motyw</button>
+        <div class="menu-wrapper">   
+          <div class="menu-toggle">
+            <button class="hamburger" aria-label="Menu">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
           </div>
-        </div>
-        <div class="menu-toggle">
-          <button class="hamburger" aria-label="Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
+          <div class="nav-wrapper">
+            <nav id="nav">
+              <ul>
+                <li>
+                  <a class="main-nav-link" href="#about">O nas</a>
+                </li>
+                <li>
+                  <a class="main-nav-link" href="#offer">Usługi</a>
+                </li>
+                <li>
+                  <a class="main-nav-link" href="#map">Mapa</a>
+                </li>
+                <li>
+                  <a class="main-nav-link" href="#contact">Kontakt</a>
+                </li>
+              </ul>
+            </nav>
+            <div class="theme-switcher">
+              <button id="toggle-theme-button" class="no-wrap">Zmień motyw</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -115,6 +117,7 @@
     <h2 data-aos="zoom-in-up">Znajdziesz nas tutaj</h2>
     <div data-aos="zoom-in" style="filter: grayscale(100%);">
       <iframe
+        tabindex="-1"
         width="600"
         height="450"
         style="border:0"
