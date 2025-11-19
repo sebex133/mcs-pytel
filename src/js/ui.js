@@ -13,9 +13,12 @@ export function setupUI() {
     const escapedHtml = e.target.innerHTML .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;');
-    debugData.innerHTML = "<span>" + escapedHtml + "_" + !menuWrapper.contains(e.target) + "<span><br/>" + debugData.innerHTML;
+    debugData.innerHTML = "<span>" + escapedHtml 
+      + "_men?" + !menuWrapper.contains(e.target)
+      + '_end?' + e.target.classList.contains('synthetic-focus-trap-end') 
+      + "<span><br/>" + debugData.innerHTML;
 
-    if (!menuWrapper.contains(e.target)) {
+    if (!menuWrapper.contains(e.target) || [...e.target.classList].indexOf('synthetic-focus-trap-end') > -1) {
       e.stopPropagation();
       toggleMenuButton.focus();
     }
