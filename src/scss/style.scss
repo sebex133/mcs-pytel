@@ -390,6 +390,46 @@ section {
   justify-content: center;
   font-weight: bold;
   padding: 1rem;
+
+  .card-back  {
+    display: none;
+  }
+}
+
+#offer {
+  .offer-grid-wrapper {
+    max-width: 820px;
+    margin: 0 auto;
+  }
+}
+
+.offer-grid {
+  @media (min-width: 1200px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: 1199px) {
+    &.mobile-reverse {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+  }
+
+  > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  ul {
+    padding-left: unset;
+    list-style-type: none;
+
+    li {
+      margin-bottom: 5px;
+    }
+  }
 }
 
 #map {
