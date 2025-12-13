@@ -34,7 +34,8 @@ $text-color-light-mode: #333333; // #FFF; //alt
 @mixin dark-mode {
   --bg-color: #{ $bg-color-dark-mode };
   --text-color: #{ $text-color-dark-mode };
-  
+  --shadow-color: rgba(255, 255, 255, 0.05);
+
   background-color: $bg-color-dark-mode;
   color: $text-color-dark-mode;
 }
@@ -42,6 +43,7 @@ $text-color-light-mode: #333333; // #FFF; //alt
 @mixin light-mode {
   --bg-color: #{ $bg-color-light-mode };
   --text-color: #{ $text-color-light-mode };
+  --shadow-color: rgba(0, 0, 0, 0.05);
 
   background-color: $bg-color-light-mode;
   color: $text-color-light-mode;
@@ -50,6 +52,7 @@ $text-color-light-mode: #333333; // #FFF; //alt
 @mixin black-mode {
   --bg-color: #{ $color-black };
   --text-color: #{ $color-white };
+  --shadow-color: rgba(255, 255, 255, 0.05);
 
   background-color: $color-black;
   color: $color-white;
@@ -58,13 +61,10 @@ $text-color-light-mode: #333333; // #FFF; //alt
 @mixin white-mode {
   --bg-color: #{ $color-white };
   --text-color: #{ $color-black };
+  --shadow-color: rgba(0, 0, 0, 0.05);
 
   background-color: $color-white;
   color: $color-black;
-}
-
-:root {
-  --shadow-color: rgba(255, 255, 255, 0.05);
 }
 
 html {
@@ -333,9 +333,16 @@ nav {
 }
 
 section {
-  padding: 4rem 2rem;
   text-align: center;
-  box-shadow: 0 2px 8px var(--shadow-color);
+  box-shadow: 0 6px 8px var(--shadow-color);
+  
+  padding: 60px 20px;
+  @media (min-width: 768px) {
+    padding: 80px 20px;
+  }
+  @media (min-width: 1200px) {
+    padding: 100px 20px;
+  }
 }
 
 #about p {
@@ -375,13 +382,14 @@ section {
   height: 200px;
   border-radius: 50%;
   color: var(--bg-color);
-  background: linear-gradient(135deg, var(--bg-color), var(--text-color));
+  background-color: var(--text-color);
+  // box-shadow: 0 6px 12px var(--text-color);
+  // background: linear-gradient(160deg, var(--bg-color), var(--text-color));
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
   padding: 1rem;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 #map {
