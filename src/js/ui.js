@@ -1,6 +1,4 @@
 export function setupUI() {
-  console.log("MCS-PYTEL script");
-
   const toggleThemeButton = document.querySelector("#toggle-theme-button");
   toggleThemeButton.addEventListener("click", toggleThemeFunc);
 
@@ -10,14 +8,6 @@ export function setupUI() {
   const debugData = document.querySelector("#debug-data");
 
   const focusTrapHandler = (e) => {
-    const escapedHtml = e.target.innerHTML .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;');
-    debugData.innerHTML = "<span>" + escapedHtml 
-      + "_men?" + !menuWrapper.contains(e.target)
-      + '_end?' + e.target.classList.contains('synthetic-focus-trap-end') 
-      + "<span><br/>" + debugData.innerHTML;
-
     if (!menuWrapper.contains(e.target) || [...e.target.classList].indexOf('synthetic-focus-trap-end') > -1) {
       e.stopPropagation();
       toggleMenuButton.focus();
@@ -52,18 +42,38 @@ export function setupUI() {
       }
     });
   }
+
+  document.getElementById("copy-to-clipboard-button").addEventListener("click", async (e) => {
+    const clickedElement = e.currentTarget;
+    const textToCopy = clickedElement.innerHTML;
+
+    clickedElement.classList.add('clicked');
+    setTimeout(() => {
+      clickedElement.classList.remove('clicked');
+    }, 200);
+
+    try {
+      await navigator.clipboard.writeText(textToCopy);
+    } catch (err) {
+      console.error("Failed to copy: ", err);
+    }
+  });
 }
 
 var focusTrappedElementsHandlers = new Map();
 
 var isThemeDark = true;
-const toggleThemeFunc = () => {
+const toggleThemeFunc = (e) => {
+  const themeToggler = e.currentTarget;
+
   document.body.classList.add('transitioning-mode');
 
   if (isThemeDark) {
     document.body.classList.add("light-mode");
+    themeToggler.classList.add("light-mode");
   } else {
     document.body.classList.remove("light-mode");
+    themeToggler.classList.remove("light-mode");
   }
   
   isThemeDark = !isThemeDark;
@@ -72,3 +82,5 @@ const toggleThemeFunc = () => {
     document.body.classList.remove('transitioning-mode');
   }, 300);
 };
+
+
