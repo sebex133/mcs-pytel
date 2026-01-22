@@ -20,9 +20,6 @@
   <!-- <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
   <meta name="msapplication-TileImage" content="/mstile-150x150.png" /> -->
 
-  <!--
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous"/>
-  -->
   <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Orbitron:wght@400..900&display=swap" rel="stylesheet"  >
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
   
@@ -44,7 +41,7 @@
     <div class="header-sticky black-white-wrapper">
       <div class="header-wrapper container">
         <div class="logo-container">
-          <a href="#banner" class="logo orbitron-font no-wrap">
+          <a href="/" class="logo orbitron-font no-wrap">
             MCS-PYTEL
           </a>
         </div>
@@ -216,11 +213,54 @@
   <section id="footer">
     <p data-aos--DISABLED="fade-down">&copy; 2025 MCS-PYTEL | Wszystkie prawa zastrzeżone.</p>
     <p data-aos--DISABLED="fade-up">⚖️ Informacje zamieszczone na tej stronie internetowej nie stanowią oferty w rozumieniu art. 71 Kodeksu cywilnego.</p>
-    <p data-aos--DISABLED="fade-up">🍪 Ta strona <b>nie używa</b> plików cookies, ani <b>nie przetwarza</b> żadnych danych osobowych i statystycznych.</p>
-    <p data-aos--DISABLED="fade-up">🔐 Właściciel strony <b>nie ponosi odpowiedzialności</b> za jakiekolwiek konsekwecje korzystania z powyższej strony</p>
+    <div data-aos--DISABLED="fade-up" class="footer-links">
+      <a href="/polityka-cookies.html">🍪 Polityka cookies</a>
+      <a href="/polityka-prywatnosci.html">⚖️ Polityka prywatności</a>
+      <div>
+        <a href="/kontakt.html">Kontakt</a>
+      </div>
+      <div>
+        <button id="cookie-banner-opener">Ustawienia Cookies</button>
+      </div>
+    </div>
   </section>
 
-  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script> -->
+  <dialog id="cookie-dialog">
+    <h2>Ustawienia cookies</h2>
+    <p>Dbamy o Twoją prywatność i działamy w zgodzie z przepisami o ochronie danych osobowych.</p>
+    <p>Wybierz swoje preferencje dotyczące cookies - zaznacz te na, które wyrażasz zgodę.</p>
+
+    <form id="cookie-form">
+      <label>
+        <input type="checkbox" name="functional" checked disabled>
+        Funkcjonalne (wymagane)
+      </label>
+      <p>Cookies wymagane do poprawnego działania funkcjonalności tej strony. Nie służą do celów analitycznych, marketingowych ani profilowania.</p>
+
+      <label>
+        <input type="checkbox" name="analytics">
+        Analityczne
+      </label>
+      <p>Cookies służące do celów analitycznych z wykorzystaniem narzędzi Google Analytics i Google Tag Manager.</p>
+
+      <label>
+        <input type="checkbox" name="marketing">
+        Marketingowe
+      </label>
+      <p>Cookies służące do celów marketingowych z wykorzystaniem narzędzi Google Ads.</p>
+
+      <div class="cookie-actions">
+        <button type="button" id="accept-selected">Zaakceptuj wybrane</button>
+        <button type="button" id="deny-optional">Odrzuć opcjonalne</button>
+        <button type="button" id="accept-all">Zaakceptuj wszystkie</button>
+      </div>
+
+      <div class="cookie-close hidden" id="reopen-close">
+        <button type="button" id="close-dialog">Zamknij</button>
+      </div>
+    </form>
+  </dialog>
+
   <script type="module" src="./js/bundle.js"></script>
   <!-- <script type="module" src="/js/main.js"></script> -->
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>

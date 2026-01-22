@@ -1,11 +1,13 @@
 // Import modules
 import { setupUI } from './ui.js';
+import { cookieConsent } from './cookie-consent.js';
 // import { fetchData } from './api.js';
 // import { formatDate } from './utils.js';
 
 // DOM Ready
 document.addEventListener('DOMContentLoaded', async () => {
   setupUI();
+  cookieConsent();
 
 //   try {
 //     const data = await fetchData();
