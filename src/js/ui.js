@@ -1,12 +1,53 @@
+
+
+var isThemeDark = true;
+const toggleThemeFunc = (e) => {
+  const themeToggler = e.currentTarget;
+
+  document.body.classList.add('transitioning-mode');
+
+  if (isThemeDark) {
+    document.body.classList.add("light-mode");
+    themeToggler.classList.add("light-mode");
+  } else {
+    document.body.classList.remove("light-mode");
+    themeToggler.classList.remove("light-mode");
+  }
+
+  isThemeDark = !isThemeDark;
+
+  // Save user choice for theme.
+  document.cookie = `theme_dark=${isThemeDark};path=/;max-age=${60*60*24*365}`;
+
+  setTimeout(function() {
+    document.body.classList.remove('transitioning-mode');
+  }, 300);
+};
+
 export function setupUI() {
+  // Switch theme on switcher click.
   const toggleThemeButton = document.querySelector("#toggle-theme-button");
   toggleThemeButton.addEventListener("click", toggleThemeFunc);
+  
+  // Switch theme by cookie value.
+  const themeDarkCookie = document.cookie
+    .split("; ")
+    .find(row => row.startsWith('theme_dark' + "="))
+    ?.split("=")[1] ?? "true";
 
+  if (themeDarkCookie != 'true') {
+    isThemeDark = !isThemeDark;
+    document.body.classList.add('light-mode');
+    toggleThemeButton.classList.add('light-mode');
+  }
+
+  // Menu wrapper.
   const menuWrapper = document.querySelector(".menu-wrapper");
   const toggleMenuButton = document.querySelector(".menu-toggle .hamburger");
   const navWrapper = document.querySelector(".nav-wrapper");
-  const debugData = document.querySelector("#debug-data");
 
+  // Focus trap handler.
+  var focusTrappedElementsHandlers = new Map();
   const focusTrapHandler = (e) => {
     if (!menuWrapper.contains(e.target) || [...e.target.classList].indexOf('synthetic-focus-trap-end') > -1) {
       e.stopPropagation();
@@ -14,6 +55,7 @@ export function setupUI() {
     }
   };
 
+  // Menu hamburger.
   toggleMenuButton.addEventListener("click", (event) => {
     toggleMenuButton.classList.toggle("active");
     navWrapper.classList.toggle("show");
@@ -43,6 +85,7 @@ export function setupUI() {
     });
   }
 
+  // Contact copt to clipboard.
   document.getElementById("copy-to-clipboard-button").addEventListener("click", async (e) => {
     const clickedElement = e.currentTarget;
     const textToCopy = clickedElement.innerHTML;
@@ -60,29 +103,7 @@ export function setupUI() {
   });
 }
 
-var focusTrappedElementsHandlers = new Map();
-
-var isThemeDark = true;
-const toggleThemeFunc = (e) => {
-  const themeToggler = e.currentTarget;
-
-  document.body.classList.add('transitioning-mode');
-
-  if (isThemeDark) {
-    document.body.classList.add("light-mode");
-    themeToggler.classList.add("light-mode");
-  } else {
-    document.body.classList.remove("light-mode");
-    themeToggler.classList.remove("light-mode");
-  }
-  
-  isThemeDark = !isThemeDark;
-
-  setTimeout(function() {
-    document.body.classList.remove('transitioning-mode');
-  }, 300);
-};
-
+// Dialog modal.
 export function dialogs() {
   const dialogs = document.querySelectorAll(".dialog");
 
