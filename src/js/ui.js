@@ -83,4 +83,29 @@ const toggleThemeFunc = (e) => {
   }, 300);
 };
 
+export function dialogs() {
+  const dialogs = document.querySelectorAll(".dialog");
 
+  dialogs.forEach(el => {
+    el.addEventListener("pointerdown", (e) => {
+      if (e.target === el) {
+        el.close();
+      }
+    });
+
+    const dialogClose = el.querySelector('.dialog-close');
+    dialogClose.addEventListener("click", (e) => {
+      el.close();
+    });
+  });
+
+  const dialogOpeners = document.querySelectorAll(".dialog-opener");
+
+  dialogOpeners.forEach(el => {
+    const relatedDialog = document.getElementById(el.getAttribute('data-related-dialog'));
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (!relatedDialog.open) relatedDialog.showModal();
+    });
+  });
+}

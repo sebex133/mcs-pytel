@@ -115,7 +115,7 @@
           </div>
         </div>
         <div class="" data-aos="flip-left">
-          <h3>Serwis sprzętu komputerowego</h3>
+          <h4>Serwis sprzętu komputerowego</h4>
           <ul>
             <li>Serwis komputerów osobistych</li>
             <li>Wymiana baterii w laptopach i smartfonach</li>
@@ -126,7 +126,7 @@
       </div>
       <div class="offer-grid mobile-reverse">
         <div class="" data-aos="flip-left">
-          <h3>Oprogramowanie</h3>
+          <h4>Oprogramowanie</h4>
           <ul>
             <li>Instalacja systemów operacyjnych, programów i gier</li>
             <li>Rozwiązywanie problemów związanych z oprogramowaniem</li>
@@ -150,7 +150,7 @@
           </div>
         </div>
         <div class="" data-aos="flip-left">
-          <h3>Strony i aplikacje WWW</h3>
+          <h4>Strony i aplikacje WWW</h4>
           <ul>
             <li>Tworzenie stron i aplikacji internetowych: <br/>
               <span class="highlighted">Drupal, WordPress, Symfony</span></li>
@@ -161,7 +161,7 @@
       </div>
       <div class="offer-grid mobile-reverse">
         <div class="" data-aos="flip-left">
-          <h3>Konsultacje informatyczne</h3>
+          <h4>Konsultacje informatyczne</h4>
           <ul>
             <li>Rozpoznanie indywidualnych potrzeb klienta i dobór kompleksowych rozwiązań</li>
             <li>Szkolenia i korepetycje</li>
@@ -214,51 +214,367 @@
     <p data-aos--DISABLED="fade-down">&copy; 2025 MCS-PYTEL | Wszystkie prawa zastrzeżone.</p>
     <p data-aos--DISABLED="fade-up">⚖️ Informacje zamieszczone na tej stronie internetowej nie stanowią oferty w rozumieniu art. 71 Kodeksu cywilnego.</p>
     <div data-aos--DISABLED="fade-up" class="footer-links">
-      <a href="./polityka-cookies.html">🍪 Polityka cookies</a>
-      <a href="./polityka-prywatnosci.html">⚖️ Polityka prywatności</a>
+      <a class="dialog-opener" data-related-dialog="cookie-policy" href="#">🍪 Polityka cookies</a>
+      <a class="dialog-opener" data-related-dialog="privacy-policy" href="#">⚖️ Polityka prywatności</a>
       <div>
-        <a href="./kontakt.html">Kontakt</a>
+        <a class="dialog-opener" data-related-dialog="gdpr-policy" href="#">Klauzula RODO</a>
       </div>
       <div>
-        <button id="cookie-banner-opener">Ustawienia Cookies</button>
+        <button id="cookie-dialog-opener">Ustawienia Cookies</button>
       </div>
     </div>
   </section>
 
-  <dialog id="cookie-dialog">
-    <h2>Ustawienia cookies</h2>
-    <p>Dbamy o Twoją prywatność i działamy w zgodzie z przepisami o ochronie danych osobowych.</p>
-    <p>Wybierz swoje preferencje dotyczące cookies - zaznacz te na, które wyrażasz zgodę.</p>
+  <dialog id="cookie-dialog" closedBy="any">
+    <div class="dialog-wrapper">
+      <div class="sticky-header">
+        <h2>Ustawienia cookies</h2>
+      </div>
+      <p>
+        Ta strona wykorzystuje podstawowe pliki cookies, które umożliwiają działanie funkcjonalności strony, a także opcjonalne pliki cookies, które mogą być wykorzystywane do analizy ruch użytkowników na stronie oraz do personalizacji reklam.
+      </p>
+      <p>
+        Dbamy o Twoją prywatność - możesz zapoznać się z pełną treścią <a class="dialog-opener" data-related-dialog="privacy-policy" href="#">Polityki prywatności</a> oraz <a class="dialog-opener" data-related-dialog="cookie-policy" href="#">Polityki cookies</a>, a&nbsp;także wybrać na które pliki cookies wyrażasz zgodę. Możesz w każdej chwili zmienić swoją zgodę za pomocą przycisku Ustawienia Cookies w stopce strony.
+      </p>
 
-    <form id="cookie-form">
-      <label>
-        <input type="checkbox" name="functional" checked disabled>
-        Funkcjonalne (wymagane)
-      </label>
-      <p>Cookies wymagane do poprawnego działania funkcjonalności tej strony. Nie służą do celów analitycznych, marketingowych ani profilowania.</p>
+      <form id="cookie-form">
+        <div class="cookie-options">
+          <p>Wybierz swoje preferencje dotyczące cookies - zaznacz te na, które wyrażasz zgodę.</p>
+          <label>
+            <input type="checkbox" name="functional" checked disabled>
+            Funkcjonalne (wymagane)
+          </label>
+          <p>Cookies wymagane do poprawnego działania funkcjonalności tej strony. Nie służą do celów analitycznych, ani marketingowych.</p>
 
-      <label>
-        <input type="checkbox" name="analytics">
-        Analityczne
-      </label>
-      <p>Cookies służące do celów analitycznych z wykorzystaniem narzędzi Google Analytics i Google Tag Manager.</p>
+          <label>
+            <input type="checkbox" name="analytics">
+            Analityczne
+          </label>
+          <p>Cookies służące do celów analitycznych z wykorzystaniem narzędzi Google Analytics i Google Tag Manager.</p>
 
-      <label>
-        <input type="checkbox" name="marketing">
-        Marketingowe
-      </label>
-      <p>Cookies służące do celów marketingowych z wykorzystaniem narzędzi Google Ads.</p>
+          <label>
+            <input type="checkbox" name="marketing">
+            Marketingowe
+          </label>
+          <p>Cookies służące do celów marketingowych z wykorzystaniem narzędzi Google Ads.</p>
+        </div>
 
-      <div class="cookie-actions">
-        <button type="button" id="accept-selected">Zaakceptuj wybrane</button>
-        <button type="button" id="deny-optional">Odrzuć opcjonalne</button>
-        <button type="button" id="accept-all">Zaakceptuj wszystkie</button>
+        <div class="cookie-actions">
+          <button type="button" id="cookie-settings">Ustawienia</button>
+          <button type="button" id="accept-selected">Zaakceptuj wybrane</button>
+          <button type="button" id="deny-optional">Odrzuć opcjonalne</button>
+          <button type="button" id="accept-all">Zaakceptuj wszystkie</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <dialog id="cookie-policy" class="dialog" closedBy="any">
+    <div class="dialog-wrapper">
+      <div class="sticky-header">
+        <h2>Polityka Cookies</h2>
+        <button class="dialog-close">Zamknij</button>
       </div>
 
-      <div class="cookie-close hidden" id="reopen-close">
-        <button type="button" id="close-dialog">Zamknij</button>
+      <h3>1. Czym są pliki cookies?</h3>
+      <p>
+        Pliki cookies (tzw. „ciasteczka”) to niewielkie pliki tekstowe zapisywane na urządzeniu użytkownika
+        (komputerze, smartfonie, tablecie) podczas korzystania ze strony internetowej. Cookies pozwalają
+        rozpoznać urządzenie użytkownika i odpowiednio wyświetlić stronę, dostosowując ją do jego preferencji.
+      </p>
+
+      <h3>2. Jakie rodzaje plików cookies wykorzystujemy?</h3>
+      <ul>
+        <li>
+          <strong>Cookies niezbędne</strong> – umożliwiają prawidłowe funkcjonowanie strony, są instalowane
+          bez zgody użytkownika (np. cookies związane z ustawieniami prywatności, utrzymaniem sesji).
+        </li>
+        <li>
+          <strong>Cookies analityczne</strong> – służą do zbierania informacji o sposobie korzystania ze strony,
+          np. liczbie odwiedzin, źródłach ruchu, czasie spędzonym na stronie. Wykorzystujemy je za pośrednictwem
+          narzędzia Google Analytics, w tym w trybie Consent Mode V2. Są aktywowane dopiero po wyrażeniu zgody.
+        </li>
+        <li>
+          <strong>Cookies marketingowe</strong> – umożliwiają wyświetlanie spersonalizowanych treści reklamowych
+          oraz mierzenie skuteczności kampanii. Są aktywowane wyłącznie po wyrażeniu zgody.
+        </li>
+      </ul>
+
+      <h3>3. Google Analytics i Consent Mode V2</h3>
+      <p>
+        Na stronie wykorzystujemy Google Analytics, narzędzie analityczne dostarczane przez Google Ireland Limited.
+        Google Analytics pozwala nam analizować ruch na stronie i ulepszać jej działanie.
+      </p>
+      <p>
+        Narzędzie działa w trybie <strong>Consent Mode V2</strong>, co oznacza, że przed wyrażeniem zgody
+        przetwarzanie danych odbywa się w sposób ograniczony i zanonimizowany. Pełne działanie analityczne
+        i marketingowe uruchamiane jest dopiero po udzieleniu zgody w banerze cookie.
+      </p>
+
+      <h3>4. Podstawa prawna stosowania cookies</h3>
+      <p>
+        Podstawą prawną stosowania cookies niezbędnych jest prawnie uzasadniony interes Administratora
+        (art. 6 ust. 1 lit. f RODO) polegający na zapewnieniu prawidłowego działania strony.
+      </p>
+      <p>
+        Podstawą prawną stosowania cookies analitycznych i marketingowych jest zgoda użytkownika
+        (art. 6 ust. 1 lit. a RODO), wyrażana za pośrednictwem banera cookie.
+      </p>
+
+      <h3>5. Zarządzanie plikami cookies</h3>
+      <p>
+        Użytkownik może w każdej chwili zmienić swoje ustawienia dotyczące plików cookies:
+      </p>
+      <ul>
+        <li>za pomocą banera cookie wyświetlanego na stronie,</li>
+        <li>poprzez zmianę ustawień przeglądarki internetowej (blokowanie lub usuwanie cookies).</li>
+      </ul>
+      <p>
+        Ograniczenie stosowania plików cookies może wpłynąć na niektóre funkcjonalności strony.
+      </p>
+
+      <h3>6. Okres przechowywania plików cookies</h3>
+      <p>
+        Pliki cookies mogą być przechowywane na urządzeniu użytkownika przez różny czas:
+      </p>
+      <ul>
+        <li><strong>cookies sesyjne</strong> – usuwane po zamknięciu przeglądarki,</li>
+        <li><strong>cookies stałe</strong> – przechowywane przez określony czas lub do momentu ich usunięcia przez użytkownika.</li>
+      </ul>
+
+      <h3>7. Zmiany Polityki Cookies</h3>
+      <p>
+        Administrator zastrzega sobie prawo do wprowadzania zmian w niniejszej Polityce Cookies.
+        Aktualna wersja dokumentu jest zawsze dostępna na stronie internetowej.
+      </p>
+    </div>
+  </dialog>
+
+  <dialog id="privacy-policy" class="dialog" closedBy="any">
+    <div class="dialog-wrapper">
+      <div class="sticky-header">
+        <h2>Polityka Prywatności</h2>
+        <button class="dialog-close">Zamknij</button>
       </div>
-    </form>
+
+      <h3>1. Informacje ogólne</h3>
+      <p>
+          Niniejsza Polityka Prywatności opisuje zasady przetwarzania danych osobowych użytkowników
+          korzystających ze strony internetowej prowadzonej przez <strong>XYZ</strong> z siedzibą w Poznaniu,
+          ul. Krzywa 7 (dalej: „Administrator”).
+      </p>
+      <p>
+          Strona ma charakter informacyjny i zawiera formularz kontaktowy umożliwiający przesłanie wiadomości
+          e‑mail do Administratora. Strona korzysta również z narzędzia Google Analytics, działającego w trybie
+          <strong>Consent Mode V2</strong> oraz – po wyrażeniu odpowiedniej zgody – w trybie pełnym analitycznym
+          i/lub marketingowym.
+      </p>
+      <p>
+          Administrator dokłada wszelkich starań, aby dane osobowe były przetwarzane zgodnie z obowiązującymi
+          przepisami, w szczególności z Rozporządzeniem Parlamentu Europejskiego i Rady (UE) 2016/679 (RODO)
+          oraz Ustawą o ochronie danych osobowych (UODO).
+      </p>
+
+      <h3>2. Administrator danych osobowych</h3>
+      <p>
+          Administratorem danych osobowych jest:<br>
+          <strong>XYZ</strong><br>
+          ul. Krzywa 7<br>
+          60‑000 Poznań<br>
+          Adres e-mail kontaktowy: <strong>adres@kontaktowy.pl</strong>
+      </p>
+
+      <h3>3. Zakres przetwarzanych danych</h3>
+
+      <h4>3.1. Dane przekazywane dobrowolnie przez użytkownika</h4>
+      <p>W ramach formularza kontaktowego przetwarzane są:</p>
+      <ul>
+          <li>adres e-mail,</li>
+          <li>treść wiadomości przesłanej przez formularz kontaktowy.</li>
+      </ul>
+      <p>Dane te są wykorzystywane wyłącznie w celu udzielenia odpowiedzi na przesłane zapytanie.</p>
+
+      <h4>3.2. Dane zbierane automatycznie (pliki cookies i narzędzia analityczne)</h4>
+      <p>
+          Strona korzysta z plików cookies oraz technologii śledzących w celu:
+      </p>
+      <ul>
+          <li>zapewnienia prawidłowego działania strony,</li>
+          <li>analizy ruchu na stronie (Google Analytics),</li>
+          <li>realizacji działań marketingowych – wyłącznie po wyrażeniu zgody.</li>
+      </ul>
+      <p>
+          Google Analytics działa w trybie <strong>Consent Mode V2</strong>, co oznacza, że przed wyrażeniem zgody
+          dane są przetwarzane w sposób ograniczony i zanonimizowany. Pełne działanie analityczne i marketingowe
+          uruchamiane jest dopiero po udzieleniu zgody w banerze cookie.
+      </p>
+
+      <h3>4. Cele i podstawy prawne przetwarzania danych</h3>
+
+      <h4>4.1. Kontakt poprzez formularz</h4>
+      <p>
+          <strong>Cel:</strong> udzielenie odpowiedzi na przesłane zapytanie.<br>
+          <strong>Podstawa prawna:</strong> art. 6 ust. 1 lit. f RODO – prawnie uzasadniony interes Administratora
+          polegający na prowadzeniu komunikacji z użytkownikami strony.
+      </p>
+
+      <h4>4.2. Analiza ruchu na stronie (Google Analytics)</h4>
+      <p>
+          <strong>Cel:</strong> statystyka, analiza ruchu, optymalizacja strony.<br>
+          <strong>Podstawa prawna:</strong><br>
+          – przed wyrażeniem zgody – art. 6 ust. 1 lit. f RODO (ograniczony tryb Consent Mode V2),<br>
+          – po wyrażeniu zgody – art. 6 ust. 1 lit. a RODO (zgoda użytkownika).
+      </p>
+
+      <h4>4.3. Marketing (jeśli dotyczy)</h4>
+      <p>
+          <strong>Cel:</strong> wyświetlanie spersonalizowanych treści reklamowych.<br>
+          <strong>Podstawa prawna:</strong> art. 6 ust. 1 lit. a RODO – zgoda użytkownika.
+      </p>
+
+      <h3>5. Odbiorcy danych</h3>
+      <p>
+          Dane osobowe mogą być przekazywane:
+      </p>
+      <ul>
+          <li>podmiotom świadczącym usługi hostingowe,</li>
+          <li>dostawcom narzędzi analitycznych (Google Ireland Limited),</li>
+          <li>podmiotom świadczącym usługi IT na rzecz Administratora.</li>
+      </ul>
+      <p>
+          Wszystkie podmioty przetwarzają dane na podstawie umów powierzenia i zgodnie z RODO.
+      </p>
+
+      <h3>6. Przekazywanie danych poza EOG</h3>
+      <p>
+          W związku z korzystaniem z Google Analytics dane mogą być przekazywane do państw trzecich (np. USA).
+          Google stosuje mechanizmy zgodności, takie jak EU‑US Data Privacy Framework oraz standardowe klauzule
+          umowne, aby zapewnić odpowiedni poziom ochrony danych.
+      </p>
+
+      <h3>7. Okres przechowywania danych</h3>
+      <ul>
+          <li>
+          dane z formularza kontaktowego – przez okres niezbędny do obsługi zapytania, a następnie maksymalnie
+          przez 12 miesięcy w celach dowodowych;
+          </li>
+          <li>
+          dane analityczne – zgodnie z ustawieniami Google Analytics, nie dłużej niż 26 miesięcy, chyba że
+          użytkownik wycofa zgodę wcześniej;
+          </li>
+          <li>
+          dane z plików cookies – zgodnie z ich cyklem życia lub do czasu wycofania zgody.
+          </li>
+      </ul>
+
+      <h3>8. Prawa użytkownika</h3>
+      <p>Użytkownik ma prawo do:</p>
+      <ul>
+          <li>dostępu do swoich danych,</li>
+          <li>sprostowania danych,</li>
+          <li>usunięcia danych („prawo do bycia zapomnianym”),</li>
+          <li>ograniczenia przetwarzania,</li>
+          <li>przenoszenia danych,</li>
+          <li>wniesienia sprzeciwu wobec przetwarzania,</li>
+          <li>wycofania zgody w dowolnym momencie (bez wpływu na zgodność z prawem przetwarzania przed jej wycofaniem).</li>
+      </ul>
+      <p>
+          W celu realizacji swoich praw użytkownik może skontaktować się z Administratorem poprzez adres e-mail
+          wskazany w sekcji 2.
+      </p>
+
+      <h3>9. Prawo do wniesienia skargi</h3>
+      <p>
+          Użytkownik ma prawo wnieść skargę do organu nadzorczego – Prezesa Urzędu Ochrony Danych Osobowych.
+      </p>
+
+      <h3>10. Pliki cookies</h3>
+      <p>
+          Strona wykorzystuje pliki cookies w celu:
+      </p>
+      <ul>
+          <li>zapewnienia prawidłowego działania strony (cookies niezbędne),</li>
+          <li>analizy ruchu (cookies analityczne – po wyrażeniu zgody),</li>
+          <li>działań marketingowych (cookies marketingowe – po wyrażeniu zgody).</li>
+      </ul>
+      <p>
+          Użytkownik może zarządzać zgodami poprzez baner cookie oraz ustawienia przeglądarki.
+      </p>
+
+      <h3>11. Brak logowania i kont użytkowników</h3>
+      <p>
+          Strona nie umożliwia zakładania kont ani logowania. Administrator nie prowadzi profili użytkowników.
+      </p>
+
+      <h3>12. Zmiany Polityki Prywatności</h3>
+      <p>
+          Administrator zastrzega sobie prawo do wprowadzania zmian w niniejszej Polityce Prywatności.
+          Aktualna wersja dokumentu jest zawsze dostępna na stronie internetowej.
+      </p>
+    </div>
+  </dialog>
+
+  <dialog id="gdpr-policy" class="dialog" closedBy="any">
+    <div class="dialog-wrapper">
+      <div class="sticky-header">
+        <h2>Klauzula informacyjna RODO</h2>
+        <button class="dialog-close">Zamknij</button>
+      </div>
+
+      <p>
+        Zgodnie z art. 13 Rozporządzenia Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r.
+        w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego
+        przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (RODO) informujemy, że:
+      </p>
+
+      <ol>
+        <li>
+          <strong>Administratorem Pani/Pana danych osobowych</strong> jest
+          <strong>XYZ</strong> z siedzibą w Poznaniu, ul. Krzywa 7, 60‑000 Poznań.
+        </li>
+        <li>
+          <strong>Kontakt z Administratorem</strong> jest możliwy pod adresem e-mail:
+          <strong>adres@kontaktowy.pl</strong>.
+        </li>
+        <li>
+          <strong>Pani/Pana dane osobowe</strong> będą przetwarzane w celu:
+          <ul>
+            <li>
+              udzielenia odpowiedzi na przesłane zapytanie za pośrednictwem formularza kontaktowego – na podstawie
+              art. 6 ust. 1 lit. f RODO (prawnie uzasadniony interes Administratora polegający na prowadzeniu
+              komunikacji z użytkownikami strony).
+            </li>
+          </ul>
+        </li>
+        <li>
+          <strong>Odbiorcami Pani/Pana danych osobowych</strong> mogą być podmioty świadczące usługi hostingowe,
+          IT oraz inne podmioty przetwarzające dane na podstawie umów powierzenia zawartych z Administratorem.
+        </li>
+        <li>
+          <strong>Pani/Pana dane osobowe</strong> będą przechowywane przez okres niezbędny do obsługi zapytania,
+          a następnie maksymalnie przez 12 miesięcy w celach dowodowych.
+        </li>
+        <li>
+          Przysługuje Pani/Panu prawo do:
+          <ul>
+            <li>dostępu do danych osobowych,</li>
+            <li>sprostowania danych,</li>
+            <li>usunięcia danych,</li>
+            <li>ograniczenia przetwarzania,</li>
+            <li>przenoszenia danych,</li>
+            <li>wniesienia sprzeciwu wobec przetwarzania danych.</li>
+          </ul>
+        </li>
+        <li>
+          Przysługuje Pani/Panu również <strong>prawo wniesienia skargi</strong> do Prezesa Urzędu Ochrony Danych
+          Osobowych, jeśli uzna Pani/Pan, że przetwarzanie danych narusza przepisy RODO.
+        </li>
+        <li>
+          Podanie danych osobowych jest dobrowolne, jednak ich niepodanie może uniemożliwić udzielenie odpowiedzi
+          na przesłane zapytanie.
+        </li>
+      </ol>
+    </div>
   </dialog>
 
   <script type="module" src="./js/bundle.js"></script>

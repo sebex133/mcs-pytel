@@ -146,6 +146,18 @@
     </div>
   </section>
 
+  <section id="contact">
+    <h2 DISABLED--data-aos="zoom-in-down">Kontakt</h2>
+    <div data-aos="fade-up">
+      <div>
+        <p id="copy-to-clipboard-button">kontakt@mcs-pytel.com</p>
+      </div>
+      <div>
+        <a class="cta-contact" href="mailto:kontakt@mcs-pytel.com">📧&nbsp;Napisz do nas!</a>
+      </div>
+    </div>
+  </section>
+  
   <section id="footer">
     <p data-aos--DISABLED="fade-down">&copy; 2025 MCS-PYTEL | Wszystkie prawa zastrzeżone.</p>
     <p data-aos--DISABLED="fade-up">⚖️ Informacje zamieszczone na tej stronie internetowej nie stanowią oferty w rozumieniu art. 71 Kodeksu cywilnego.</p>
@@ -156,45 +168,46 @@
         <a href="./kontakt.html">Kontakt</a>
       </div>
       <div>
-        <button id="cookie-banner-opener">Ustawienia Cookies</button>
+        <button id="cookie-dialog-opener">Ustawienia Cookies</button>
       </div>
     </div>
   </section>
 
-  <dialog id="cookie-dialog">
-    <h2>Ustawienia cookies</h2>
-    <p>Dbamy o Twoją prywatność i działamy w zgodzie z przepisami o ochronie danych osobowych.</p>
-    <p>Wybierz swoje preferencje dotyczące cookies - zaznacz te na, które wyrażasz zgodę.</p>
+  <dialog id="cookie-dialog" closedBy="any">
+    <div class="dialog-wrapper">
+      <h2 class="sticky-header">Ustawienia cookies</h3>
+      <p>Dbamy o Twoją prywatność i działamy w zgodzie z przepisami o ochronie danych osobowych.</p>
 
-    <form id="cookie-form">
-      <label>
-        <input type="checkbox" name="functional" checked disabled>
-        Funkcjonalne (wymagane)
-      </label>
-      <p>Cookies wymagane do poprawnego działania funkcjonalności tej strony. Nie służą do celów analitycznych, marketingowych ani profilowania.</p>
+      <form id="cookie-form">
+        <div class="cookie-options">
+          <p>Wybierz swoje preferencje dotyczące cookies - zaznacz te na, które wyrażasz zgodę.</p>
+          <label>
+            <input type="checkbox" name="functional" checked disabled>
+            Funkcjonalne (wymagane)
+          </label>
+          <p>Cookies wymagane do poprawnego działania funkcjonalności tej strony. Nie służą do celów analitycznych, marketingowych ani profilowania.</p>
 
-      <label>
-        <input type="checkbox" name="analytics">
-        Analityczne
-      </label>
-      <p>Cookies służące do celów analitycznych z wykorzystaniem narzędzi Google Analytics i Google Tag Manager.</p>
+          <label>
+            <input type="checkbox" name="analytics">
+            Analityczne
+          </label>
+          <p>Cookies służące do celów analitycznych z wykorzystaniem narzędzi Google Analytics i Google Tag Manager.</p>
 
-      <label>
-        <input type="checkbox" name="marketing">
-        Marketingowe
-      </label>
-      <p>Cookies służące do celów marketingowych z wykorzystaniem narzędzi Google Ads.</p>
+          <label>
+            <input type="checkbox" name="marketing">
+            Marketingowe
+          </label>
+          <p>Cookies służące do celów marketingowych z wykorzystaniem narzędzi Google Ads.</p>
+        </div>
 
-      <div class="cookie-actions">
-        <button type="button" id="accept-selected">Zaakceptuj wybrane</button>
-        <button type="button" id="deny-optional">Odrzuć opcjonalne</button>
-        <button type="button" id="accept-all">Zaakceptuj wszystkie</button>
-      </div>
-
-      <div class="cookie-close hidden" id="reopen-close">
-        <button type="button" id="close-dialog">Zamknij</button>
-      </div>
-    </form>
+        <div class="cookie-actions">
+          <button type="button" id="cookie-settings">Ustawienia</button>
+          <button type="button" id="accept-selected">Zaakceptuj wybrane</button>
+          <button type="button" id="deny-optional">Odrzuć opcjonalne</button>
+          <button type="button" id="accept-all">Zaakceptuj wszystkie</button>
+        </div>
+      </form>
+    </div>
   </dialog>
 
   <script type="module" src="./js/bundle.js"></script>

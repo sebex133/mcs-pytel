@@ -132,10 +132,12 @@ body {
 
   h1 {
     @include orbitron-font;
+    margin-top: 0;
   }
 
-  h2, h3, h4 {
+  h2, h3, h4, p {
     @include chakra-font;
+    margin-top: 0;
   }
 
   a, button, input {
@@ -500,6 +502,12 @@ section {
   font-size: 0.9rem;
   padding: 60px 0 100px;
   text-align: center;
+
+  .footer-links {
+    div {
+      margin: 5px 0;
+    }
+  }
 }
 
 @media (max-width: 768px) {
@@ -642,40 +650,82 @@ section {
   }
 }
 
-dialog#cookie-dialog {
+dialog {
+  @include white-mode;
+
   width: 100%;
-  max-width: 700px;
+  max-width: 80vw;
+  @media(min-width: 768px) {
+    max-width: 700px;
+  }
+  padding: 0;
   border: none;
-  border-radius: 8px;
-  padding: 1.5rem;
+  border-radius: 10px;
   box-shadow: 0 10px 30px rgba(0,0,0,.3);
 
+  .dialog-wrapper {
+    position: relative;
+    padding: 0 15px 10px;
+    background-color: inherit;
+
+    .sticky-header {
+      position: sticky;
+      top: 0;
+      margin: 0;
+      padding: 15px 0;
+      background-color: inherit;
+
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      h2 {
+        margin: 0;
+      }
+    }
+  }
+
+  a {
+    background-color: inherit;
+    color: inherit;
+    font-weight: 700;
+    text-decoration: underline;
+  }
   label {
     font-style: italic;
   }
-}
+  
+  &::backdrop {
+    background: rgba(0,0,0,.6);
+  }
 
-dialog::backdrop {
-  background: rgba(0,0,0,.6);
-}
+  .cookie-actions {
+    display: flex;
+    flex-direction: column;
+    @media(min-width: 768px) {
+      flex-direction: row;
+    }
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
 
-.cookie-actions {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
+  .cookie-actions button {
+    flex: 1;
+    padding: .6rem;
+    cursor: pointer;
+  }
 
-.cookie-actions button {
-  flex: 1;
-  padding: .6rem;
-  cursor: pointer;
-}
+  button#accept-selected, .cookie-options {
+    display: none;
+  }
 
-.cookie-close {
-  margin-top: 1rem;
-  text-align: right;
-}
+  &.cookie-settings-mode {
+    button#cookie-settings {
+      display: none;
+    }
 
-.hidden {
-  display: none;
+    button#accept-selected, .cookie-options {
+      display: block;
+    }
+  }
 }

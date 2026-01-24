@@ -1,8 +1,7 @@
 export function cookieConsent() { 
-  const dialog = document.getElementById("cookie-dialog");
-  const opener = document.getElementById("cookie-banner-opener");
-  const form = document.getElementById("cookie-form");
-  const reopenClose = document.getElementById("reopen-close");
+  const cookieDialog = document.getElementById("cookie-dialog");
+  const cookieForm = document.getElementById("cookie-form");
+  const cookieOpener = document.getElementById("cookie-dialog-opener");
 
   function getCookie(name) {
     return document.cookie
@@ -12,62 +11,85 @@ export function cookieConsent() {
   }
 
   function setConsentCookie(values) {
-    const value = `functional=true&analytics=${values.analytics}&marketing=${values.marketing}`;
+    const value = JSON.stringify({
+      functional: true,
+      analytics: values.analytics,
+      marketing: values.marketing
+    });
     document.cookie = `cookie_consent=${value};path=/;max-age=${60*60*24*365}`;
   }
 
-  function openDialog(force = false) {
-    if (!dialog.open) dialog.showModal();
-    reopenClose.classList.toggle("hidden", force);
+  function openCookieDialog() {
+    if (!cookieDialog.open) {
+      cookieDialog.showModal();
+    }
   }
 
-  dialog.addEventListener('close', () => {
+  function setCookieSettingsMode() {
+    cookieDialog.classList.add('cookie-settings-mode');
+  }
+
+  cookieDialog.addEventListener('close', () => {
     if (!getCookie("cookie_consent")) {
-      console.log('reopen if not deiction');
-      openDialog(true);
+      openCookieDialog();
     }
   });
 
-  dialog.addEventListener('cancel', (e) => {
+  cookieDialog.addEventListener('cancel', (e) => {
     if (!getCookie("cookie_consent")) {
       e.preventDefault();
-      console.log('make decision ifrst');
     }
   });
 
-  // First visit → force dialog
-  if (!getCookie("cookie_consent")) {
-    openDialog(true);
+  // Backdrop click close.
+  cookieDialog.addEventListener("pointerdown", (e) => {
+    if (e.target === cookieDialog && getCookie("cookie_consent")) {
+      cookieDialog.close();
+    }
+  });
+
+  // First visit - force dialog, other visits - switch settings mode.
+  const userCookiePreferences = JSON.parse(getCookie("cookie_consent") ?? '{}');
+  if (!Object.keys(userCookiePreferences).length) {
+    openCookieDialog();
+  }
+  else {
+    cookieForm.analytics.checked = userCookiePreferences.analytics;
+    cookieForm.marketing.checked = userCookiePreferences.marketing;
+    setCookieSettingsMode();
   }
 
   // Reopen via button
-  opener.addEventListener("click", () => openDialog(false));
+  cookieOpener.addEventListener("click", () => openCookieDialog());
+  
+  // Open settings mode.
+  document.getElementById("cookie-settings").onclick = () => {
+    setCookieSettingsMode();
+  };
 
   // Save selected.
   document.getElementById("accept-selected").onclick = () => {
     setConsentCookie({
-      analytics: form.analytics.checked,
-      marketing: form.marketing.checked
+      analytics: cookieForm.analytics.checked,
+      marketing: cookieForm.marketing.checked
     });
-    dialog.close();
+    cookieDialog.close();
   };
 
   // Deny optional.
   document.getElementById("deny-optional").onclick = () => {
-    form.analytics.checked = false;
-    form.marketing.checked = false;
+    cookieForm.analytics.checked = false;
+    cookieForm.marketing.checked = false;
     setConsentCookie({ analytics: false, marketing: false });
-    dialog.close();
+    cookieDialog.close();
   };
 
   // Accept all.
   document.getElementById("accept-all").onclick = () => {
-    form.analytics.checked = true;
-    form.marketing.checked = true;
+    cookieForm.analytics.checked = true;
+    cookieForm.marketing.checked = true;
     setConsentCookie({ analytics: true, marketing: true });
-    dialog.close();
+    cookieDialog.close();
   };
 
-  // Close only when reopened
-  document.getElementById("close-dialog").onclick = () => dialog.close();
 }
