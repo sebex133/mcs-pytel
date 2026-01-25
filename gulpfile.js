@@ -57,7 +57,7 @@ const jsPaths = {
   jsEntry: 'src/js/main.js',
   jsWatch: 'src/js/**/*.js',
   jsOutputDir: 'dist/js',
-  jsOutputFile: 'bundle.js',
+  jsOutputFile: 'bundle-v1.js',
 };
 
 // JS task: bundle + transpile + minify + stream
