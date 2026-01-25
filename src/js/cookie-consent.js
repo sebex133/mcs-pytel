@@ -22,11 +22,13 @@ export function cookieConsent() {
   function openCookieDialog() {
     if (!cookieDialog.open) {
       cookieDialog.showModal();
+      cookieDialog.focus();
     }
   }
 
   function setCookieSettingsMode() {
     cookieDialog.classList.add('cookie-settings-mode');
+    cookieDialog.focus();
   }
 
   cookieDialog.addEventListener('close', () => {

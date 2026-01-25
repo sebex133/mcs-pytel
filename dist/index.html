@@ -227,8 +227,8 @@
         </p>
         <div class="footer-links">
           <div>
-            <a class="dialog-opener" data-related-dialog="cookie-policy" href="#">🍪 Polityka cookies</a>
             <a class="dialog-opener" data-related-dialog="privacy-policy" href="#">⚖️ Polityka prywatności</a>
+            <a class="dialog-opener" data-related-dialog="cookie-policy" href="#">🍪 Polityka cookies</a>
           </div>
           <div>
             <button id="cookie-dialog-opener">Ustawienia Cookies</button>
@@ -246,40 +246,40 @@
     </div>
   </section>
 
-  <dialog id="cookie-dialog" closedBy="any">
+  <dialog id="cookie-dialog" closedBy="any" tabindex="0">
     <div class="dialog-wrapper">
       <div class="sticky-header">
         <h2>Ustawienia cookies</h2>
       </div>
-      <p>
-        Dbamy o Twoją prywatność - zapoznaj się z pełną treścią <a class="dialog-opener" data-related-dialog="privacy-policy" href="#">Polityki prywatności</a> oraz <a class="dialog-opener" data-related-dialog="cookie-policy" href="#">Polityki cookies</a>.
-      </p>
       <div class="cookie-info">
-      <p>
-          Niniejsza strona WWW wykorzystuje podstawowe pliki cookies, które umożliwiają działanie funkcjonalności strony, a także opcjonalne pliki cookies, które mogą być wykorzystywane do analizy ruchu użytkowników na stronie oraz do personalizacji reklam. Wybierz na które z plików cookies wyrażasz zgodę.
+        <p>
+          Niniejsza strona wykorzystuje pliki cookies, które umożliwiają poprawne działanie funkcjonalności strony, a&nbsp;także opcjonalne pliki cookies, które mogą być wykorzystywane do analizy ruchu użytkowników na stronie oraz do personalizacji reklam. Wybierz, na które z plików cookies wyrażasz zgodę.
         </p>
       </div>
+      <p>
+        Dbamy o Twoją prywatność - zapoznaj się z pełną treścią <a class="dialog-opener" data-related-dialog="privacy-policy" href="#">Polityki prywatności</a> oraz <a class="dialog-opener" data-related-dialog="cookie-policy" href="#">Polityki cookies</a>, a także z informacjami w stopce strony.
+      </p>
 
       <form id="cookie-form">
         <div class="cookie-options">
-          <p>Wybierz swoje preferencje dotyczące cookies - zaznacz te na, które wyrażasz zgodę.</p>
+          <p>Wybierz swoje preferencje dotyczące plików cookies - zaznacz te na, które wyrażasz zgodę:</p>
           <label>
             <input type="checkbox" name="functional" checked disabled>
             Funkcjonalne (wymagane)
           </label>
-          <p>Cookies wymagane do poprawnego działania funkcjonalności tej strony. Nie służą do celów analitycznych, ani marketingowych.</p>
+          <p>Wymagane do poprawnego działania funkcjonalności strony (np. zmiana motywu).</p>
 
           <label>
             <input type="checkbox" name="analytics">
             Analityczne
           </label>
-          <p>Cookies służące do celów analitycznych z wykorzystaniem narzędzi Google Analytics.</p>
+          <p>Służą do celów analitycznych z wykorzystaniem narzędzi Google Analytics (np. analiza ruchu na stronie, najczęściej klikane elementy itp.).</p>
 
           <label>
             <input type="checkbox" name="marketing">
             Marketingowe
           </label>
-          <p>Cookies służące do celów marketingowych z wykorzystaniem narzędzi Google Ads.</p>
+          <p>Służą do celów marketingowych z wykorzystaniem narzędzi Google Ads (np. profilowanie reklam).</p>
         </div>
 
         <div class="cookie-actions">
@@ -292,7 +292,7 @@
     </div>
   </dialog>
 
-  <dialog id="cookie-policy" class="dialog" closedBy="any">
+  <dialog id="cookie-policy" class="dialog" closedBy="any" tabindex="0">
     <div class="dialog-wrapper">
       <div class="sticky-header">
         <h2>Polityka Cookies</h2>
@@ -373,7 +373,7 @@
     </div>
   </dialog>
 
-  <dialog id="privacy-policy" class="dialog" closedBy="any">
+  <dialog id="privacy-policy" class="dialog" closedBy="any" tabindex="0">
     <div class="dialog-wrapper">
       <div class="sticky-header">
         <h2>Polityka Prywatności</h2>
@@ -537,7 +537,7 @@
     </div>
   </dialog>
 
-  <dialog id="gdpr-policy" class="dialog" closedBy="any">
+  <dialog id="gdpr-policy" class="dialog" closedBy="any" tabindex="0">
     <div class="dialog-wrapper">
       <div class="sticky-header">
         <h2>Klauzula informacyjna RODO</h2>

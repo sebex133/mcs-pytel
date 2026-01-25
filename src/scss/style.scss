@@ -152,10 +152,15 @@ body {
 
     text-decoration: none;
     cursor: pointer;
-
+    
     &:hover {
       opacity: 0.6;
       transition: opacity 0.1s ease;
+    }
+
+    &:focus-visible {
+      outline-width: 3px;
+      outline-offset: 2px;
     }
 
     &.text-underline {
@@ -204,7 +209,7 @@ body {
 
   &.transitioning-mode {
     &, * {
-      transition: all 0.3s ease;
+      transition: background-color 0.3s ease;
     }
   }
 }
@@ -529,7 +534,7 @@ section {
 
   .footer-flex {
     > div {
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
     // display: flex;
     // flex-direction: column;
@@ -553,7 +558,7 @@ section {
 
   .footer-links {
     div {
-      padding: 5px 0;
+      padding: 5px 0 15px;
     }
   }
 }
@@ -684,7 +689,7 @@ section {
     right: 0;
   }
 
-  transition: all ease-in 0.9s;
+  transition: top right ease-in 0.9s;
 
   &.clicked {
     &::before {
@@ -705,7 +710,7 @@ dialog {
   width: 100%;
   max-width: 90vw;
   @media(min-width: 768px) {
-    max-width: 700px;
+    max-width: 740px;
   }
   padding: 0;
   border: none;
@@ -720,8 +725,8 @@ dialog {
     .sticky-header {
       position: sticky;
       top: 0;
-      margin: 0;
-      padding: 15px 0;
+      margin: 0 0 5px;
+      padding: 15px 0 10px;
       background-color: inherit;
 
       display: flex;
@@ -729,7 +734,10 @@ dialog {
       justify-content: space-between;
 
       h2 {
-        margin: 0;
+        flex: 1;
+        padding-bottom: 15px;
+        margin: 0 20px 0 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
       }
     }
   }
@@ -740,12 +748,18 @@ dialog {
     font-weight: 700;
     text-decoration: underline;
   }
+
   label {
+    cursor: pointer;
     font-style: italic;
+
+    & + p {
+      margin: 5px 0 15px;
+    }
   }
   
   &::backdrop {
-    background: rgba(0,0,0,.6);
+    background: rgba(0, 0, 0, 0.3);
   }
 
   .cookie-actions {
@@ -754,13 +768,21 @@ dialog {
     @media(min-width: 768px) {
       flex-direction: row;
     }
-    gap: 1rem;
-    margin-top: 1.5rem;
+    gap: 12px;
+    margin-top: 25px;
+
+    button {
+      &:hover {
+        opacity: unset;
+        outline: 2px solid var(--text-color);
+        outline-offset: -4px;
+      }
+    }
   }
 
   .cookie-actions button {
     flex: 1;
-    padding: .6rem;
+    padding: 12px 0;
     cursor: pointer;
   }
 

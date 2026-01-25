@@ -21,7 +21,7 @@ const toggleThemeFunc = (e) => {
 
   setTimeout(function() {
     document.body.classList.remove('transitioning-mode');
-  }, 300);
+  }, 150);
 };
 
 export function setupUI() {
@@ -42,6 +42,7 @@ export function setupUI() {
   }
 
   // Menu wrapper.
+  const headerWrapper = document.querySelector(".header-wrapper");
   const menuWrapper = document.querySelector(".menu-wrapper");
   const toggleMenuButton = document.querySelector(".menu-toggle .hamburger");
   const navWrapper = document.querySelector(".nav-wrapper");
@@ -56,7 +57,7 @@ export function setupUI() {
   };
 
   // Menu hamburger.
-  toggleMenuButton.addEventListener("click", (event) => {
+  const toggleMenuFunc = () => {
     toggleMenuButton.classList.toggle("active");
     navWrapper.classList.toggle("show");
 
@@ -69,7 +70,9 @@ export function setupUI() {
       document.body.removeEventListener('focusin', dropdownFocusTrapHandler);
       focusTrappedElementsHandlers.delete(toggleMenuButton);
     }
-  });
+  };
+
+  toggleMenuButton.addEventListener("click", toggleMenuFunc);
 
   const mainNavLinks = document.getElementsByClassName("main-nav-link");
   for (let i = 0; i < mainNavLinks.length; i++) {
@@ -84,6 +87,13 @@ export function setupUI() {
       }
     });
   }
+
+  // Menu close on body click.
+  document.body.addEventListener('click', (event) => {
+    if (toggleMenuButton.classList.contains('active') && !headerWrapper.contains(event.target)) {
+      toggleMenuFunc();
+    }
+  });
 
   // Contact copt to clipboard.
   document.getElementById("copy-to-clipboard-button").addEventListener("click", async (e) => {
@@ -126,7 +136,10 @@ export function dialogs() {
     const relatedDialog = document.getElementById(el.getAttribute('data-related-dialog'));
     el.addEventListener('click', (e) => {
       e.preventDefault();
-      if (!relatedDialog.open) relatedDialog.showModal();
+      if (!relatedDialog.open) {
+        relatedDialog.showModal();
+        relatedDialog.focus();
+      }
     });
   });
 }
