@@ -31,7 +31,7 @@ function sleep(ms) {
 // HTML to dist
 gulp.task("html", () => {
   return gulp
-    .src("src/*.html")
+    .src("src/index.html")
     .pipe(gulp.dest("dist"))
     .pipe(browserSync.stream());
 });
@@ -44,20 +44,12 @@ gulp.task("js", () => {
     .pipe(browserSync.stream());
 });
 
-// gulp.task('js', () => {
-//   return gulp.src('src/js/**/*.js')
-//     .pipe(babel({ presets: ['@babel/preset-env'] }))
-//     .pipe(terser())
-//     .pipe(gulp.dest('dist/js'))
-//     .pipe(browserSync.stream());
-// });
-
 // Paths
 const jsPaths = {
   jsEntry: 'src/js/main.js',
   jsWatch: 'src/js/**/*.js',
   jsOutputDir: 'dist/js',
-  jsOutputFile: 'bundle-v1.js',
+  jsOutputFile: 'bundle.js',
 };
 
 // JS task: bundle + transpile + minify + stream
@@ -95,19 +87,6 @@ gulp.task("styles", () => {
   )
 });
 
-// Compile SCSS
-// gulp.task("scss", () => {
-//   return (
-//     gulp
-//       .src("src/scss/**/*.scss")
-//       .pipe(plumber())
-//       .pipe(sass({ outputStyle: "compressed" }).on("error", sass.logError))
-//       // .pipe(sleep(100))
-//       .pipe(gulp.dest("dist/css"))
-//       .pipe(browserSync.stream())
-//   );
-// });
-
 // Serve and watch
 gulp.task("serve", () => {
   browserSync.init({
@@ -121,13 +100,11 @@ gulp.task("serve", () => {
     // ]
   });
 
-  // gulp.watch('src/assets/**/*.*', gulp.series('assets'));
   gulp.watch("src/*.html", gulp.series("html"));
   gulp.watch(jsPaths.jsWatch, gulp.series("js-es6"));
   gulp.watch(stylesPaths.scss, gulp.series("styles"));
-  // gulp.watch("src/js/**/*.js", gulp.series("js"));
-  // gulp.watch("src/scss/**/*.scss", gulp.series("scss"));
   // gulp.watch('src/*.html').on('change', browserSync.reload);
+  // gulp.watch('src/assets/**/*.*', gulp.series('assets'));
 });
 
 // Default task
