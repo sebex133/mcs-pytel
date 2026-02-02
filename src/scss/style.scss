@@ -102,16 +102,6 @@ html {
 body {
   position: relative;
 
-  &::-webkit-scrollbar {
-    width: 10px;
-    background-color: rgb(120, 120, 120);
-  }
-
-  &::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background-color: #2e2e2e;
-  }
-
   margin: 0;
   padding: 0;
 
@@ -716,6 +706,16 @@ section {
 
 dialog {
   @include white-mode;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    background-color: rgb(120, 120, 120);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #2e2e2e;
+  }
 
   width: 100%;
   max-width: 90vw;
