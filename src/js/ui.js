@@ -28,7 +28,7 @@ export function setupUI() {
   // Switch theme on switcher click.
   const toggleThemeButton = document.querySelector("#toggle-theme-button");
   toggleThemeButton.addEventListener("click", toggleThemeFunc);
-  
+
   // Switch theme by cookie value.
   const themeDarkCookie = document.cookie
     .split("; ")

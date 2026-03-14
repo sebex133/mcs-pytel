@@ -1,4 +1,4 @@
-export function cookieConsent() { 
+export function cookieConsent() {
   const cookieDialog = document.getElementById("cookie-dialog");
   const cookieForm = document.getElementById("cookie-form");
   const cookieOpener = document.getElementById("cookie-dialog-opener");
@@ -63,7 +63,7 @@ export function cookieConsent() {
 
   // Reopen via button
   cookieOpener.addEventListener("click", () => openCookieDialog());
-  
+
   // Open settings mode.
   document.getElementById("cookie-settings").onclick = () => {
     setCookieSettingsMode();
