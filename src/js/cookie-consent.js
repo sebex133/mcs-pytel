@@ -10,6 +10,16 @@ export function cookieConsent() {
       ?.split("=")[1];
   }
 
+  function updateGtmConsent(values) {
+    // Update GTM consent.
+    gtag('consent', 'update', {
+      'ad_storage': values.marketing ? 'granted' : 'denied',
+      'ad_user_data': values.marketing ? 'granted' : 'denied',
+      'ad_personalization': values.marketing ? 'granted' : 'denied',
+      'analytics_storage': values.analytics ? 'granted' : 'denied'
+    });
+  }
+
   function setConsentCookie(values) {
     const value = JSON.stringify({
       functional: true,
@@ -17,6 +27,8 @@ export function cookieConsent() {
       marketing: values.marketing
     });
     document.cookie = `cookie_consent=${value};path=/;max-age=${60*60*24*365}`;
+
+    updateGtmConsent(values);
   }
 
   function openCookieDialog() {
@@ -56,6 +68,7 @@ export function cookieConsent() {
     openCookieDialog();
   }
   else {
+    updateGtmConsent(userCookiePreferences);
     cookieForm.analytics.checked = userCookiePreferences.analytics;
     cookieForm.marketing.checked = userCookiePreferences.marketing;
     setCookieSettingsMode();

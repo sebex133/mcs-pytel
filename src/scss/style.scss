@@ -27,7 +27,7 @@ $text-color-light-mode: #333333; // #FFF; //alt
   font-family: "Orbitron",
     -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
-    "Helvetica Neue", Arial, 
+    "Helvetica Neue", Arial,
     monospace;
 }
 
@@ -35,7 +35,7 @@ $text-color-light-mode: #333333; // #FFF; //alt
   font-family: "Chakra Petch",
     -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
-    "Helvetica Neue", Arial, 
+    "Helvetica Neue", Arial,
     monospace;
 }
 
@@ -89,7 +89,7 @@ html {
 
 @media (prefers-color-scheme: dark) {
   body.light-mode {
-    @include theme-switcher-box-shadow;    
+    @include theme-switcher-box-shadow;
   }
 }
 
@@ -117,15 +117,15 @@ body {
     "Segoe UI Emoji", /* Windows emoji */
     "Noto Color Emoji", /* Android/Linux emoji */
   ;
-  
+
   .orbitron-font {
     @include orbitron-font;
   }
-  
+
   .chakra-font {
     @include chakra-font;
   }
-  
+
   .white-font {
     @include black-mode;
   }
@@ -196,11 +196,11 @@ body {
   }
 
   &.light-mode {
-    &, a, button, input {  
+    &, a, button, input {
       @include light-mode;
     }
 
-    .black-white-wrapper {      
+    .black-white-wrapper {
       &, a, button, input {
         @include white-mode;
       }
@@ -252,7 +252,7 @@ header {
     z-index: 1;
     box-shadow: 0 2px 8px var(--text-color);
   }
-  
+
   .header-wrapper {
     position: relative;
 
@@ -296,7 +296,7 @@ header {
 
 nav {
   width: 100%;
-  
+
   display: flex;
   justify-content: center;
 
@@ -309,7 +309,7 @@ nav {
     padding-left: 0;
     list-style-type: none;
   }
-  
+
   a {
     position: relative;
     font-weight: bold;
@@ -337,7 +337,7 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   .theme-toggler {
     position: relative;
     padding: 4px 5px 2px;
@@ -375,13 +375,13 @@ nav {
 section {
   text-align: center;
   box-shadow: 0 6px 8px var(--shadow-color);
-  
-  padding: 60px 20px;
+
+  padding: 80px 20px 40px;
   @media (min-width: 768px) {
-    padding: 80px 20px;
+    padding: 90px 20px 50px;
   }
   @media (min-width: 1200px) {
-    padding: 100px 20px;
+    padding: 100px 20px 70px;
   }
 }
 
@@ -585,11 +585,11 @@ section {
     background-color: var(--bg-color);
     box-shadow: -2px 2px 4px var(--text-color);
     overflow: hidden;
-    
+
     position: absolute;
     top: 69px;
     right: calc(-100% - 10px);
-    
+
     transition: right 0.3s ease;
     &.show {
       right: 0;
@@ -684,7 +684,7 @@ section {
     top: 4px;
     right: 4px;
   }
-  
+
   &::after {
     content: "";
     display: inline-block;
@@ -801,6 +801,10 @@ dialog {
         padding: 12px 20px;
         opacity: 0.6;
       }
+
+      button {
+        max-height: 44px;
+      }
     }
   }
 
@@ -819,9 +823,15 @@ dialog {
       margin: 5px 0 15px;
     }
   }
-  
+
   &::backdrop {
     background: rgba(0, 0, 0, 0.3);
+  }
+
+  .cookie-options {
+    input {
+      vertical-align: top;
+    }
   }
 
   .cookie-actions {

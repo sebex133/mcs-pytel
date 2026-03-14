@@ -37,9 +37,9 @@ gulp.task("html", () => {
 });
 
 // Minify JS
-gulp.task("js", () => {
+gulp.task("js-min", () => {
   return gulp
-    .src("src/js/**/*.js")
+    .src("src/js/**/*.min.js")
     .pipe(gulp.dest("dist/js"))
     .pipe(browserSync.stream());
 });
@@ -101,6 +101,7 @@ gulp.task("serve", () => {
   });
 
   gulp.watch("src/*.html", gulp.series("html"));
+  gulp.watch("src/*.min.js", gulp.series("js-min"));
   gulp.watch(jsPaths.jsWatch, gulp.series("js-es6"));
   gulp.watch(stylesPaths.scss, gulp.series("styles"));
   // gulp.watch('src/*.html').on('change', browserSync.reload);
@@ -108,5 +109,5 @@ gulp.task("serve", () => {
 });
 
 // Default task
-gulp.task("default", gulp.series("html", "js-es6", "styles", "serve"));
+gulp.task("default", gulp.series("html", "js-es6", "js-min", "styles", "serve"));
 // gulp.task('default', gulp.series('assets', 'scss', 'js', 'html', 'serve'));
