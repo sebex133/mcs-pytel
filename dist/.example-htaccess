@@ -1,0 +1,19 @@
+RewriteEngine On
+
+# MCS-PYTEL.PL
+# Redirect all .pl (with or without www, http or https) to .com
+# RewriteCond %{HTTP_HOST} ^(www\.)?mcs-pytel\.pl$ [NC]
+
+# MCS-PYTEL.COM
+RewriteCond %{HTTP_HOST} ^(www\.)?mcs-pytel\.com$ [NC]
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\.mcs-pytel\.com$ [NC]
+
+RewriteRule ^(.*)$ https://mcs-pytel.com/ [L,R=301]
+
+# Replace above RewriteRule with below, if you want to redirect further URL part
+# e.g. /blog/page-1 ($1 is the key here)
+# RewriteRule ^(.*)$ https://mcs-pytel.com/$1 [L,R=301]
+
+# DISABLE HOSTING PROVIDER REDIRECTS TO EXCLUDE MULTIPLE REDIRECTS
+# ABOVE REDIRECTS COVERS ALL RULES (http(s)://(www).mcs-pytel.(pl).com)
