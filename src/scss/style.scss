@@ -348,6 +348,10 @@ nav {
     span {
       font-size: 20px;
       line-height: 20px;
+
+      // Hiding dark/light switcher.
+      opacity: 1;
+      transition: opacity ease-in 0.3s;
     }
 
     .marker {
@@ -367,6 +371,18 @@ nav {
     &.light-mode {
       .marker {
         left: calc(100% - 26px);
+      }
+
+      // Hide light switch.
+      > .light-mode {
+        opacity: 0;
+      }
+    }
+
+    &:not(.light-mode) {
+      // Hide dark switch.
+      > .dark-mode {
+        opacity: 0;
       }
     }
   }
